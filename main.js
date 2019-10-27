@@ -1,9 +1,13 @@
-// When document is loaded, 'init' function is invoked
+/**
+ * When document is loaded, 'init' function is invoked
+ */
 document.addEventListener('DOMContentLoaded', init)
 
-// init function calls initWorker function to check if worker is supported, 
-// if worker is suported initWorker function returns initiated worker 
-// then init function invokes analysePNG with worker and image link arguments
+/**
+ * init function calls initWorker function to check if worker is supported, 
+ * if worker is suported initWorker function returns initiated worker
+ * then init function invokes analysePNG with worker and image link arguments
+ */
 function init(){
 
   let workerFileName,
@@ -30,25 +34,34 @@ function init(){
   
 }
 
-// function that returns file name 
-//that need to be send to worker as argument in init function
-// functionality done for modularity and further development
+/**
+ * Function that returns file name that need to be send to worker as argument in init function.'
+ * Functionality done for modularity and further development
+ * @return {String}      javascript file with code ofr worker
+ */
 function getWorkerFileName(){
   let workerFileName = 'worker.js';
   return workerFileName;
 };
 
-// function that returns image URL 
-// functionality done for modularity and further development
+/**
+ * Function that returns image URL. Functionality done for modularity and further development
+ * @return {String}      image url or path
+ */
 function getImageURL(){
   let imageURL = './images/cam3.png';
   return imageURL;
 };
 
-// initWorker is a closure that has public properties:
-// 1. to check if worker is supported
-// 2. to access worker 
-// it takes a parameter/argument - a worker file name for worker initialization
+
+/**
+ * initWorker is a closure that has public properties:
+ * 1. to check if worker is supported
+ * 2. to access worker 
+ * @param  {String} arg1 a worker file name for worker initialization
+ * @return {Function}      to check if worker is supported
+ * @return {Function}      to access worker
+ */
 function initWorker(workerFileName){
 
   let workerSupport,
@@ -76,7 +89,11 @@ function initWorker(workerFileName){
 
 };
 
-// This function is invoked when document is loaded, worker is initialied and passed as argument
+/**
+ * This function is invoked when document is loaded, worker is initialied and passed as argument
+ * @param  {Object} arg1 Initialized Web Worker
+ * @param  {String} arg2 image URL
+ */
 function analysePNG(worker, pImageURL){
   let image,
       ctx;
