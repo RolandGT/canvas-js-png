@@ -4,7 +4,7 @@
   "description": "PNG analyzer using canvas web worker",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "Rolandas Gedgaudas - T",
   "license": "ISC",
