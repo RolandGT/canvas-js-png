@@ -51,7 +51,7 @@ function analysePNG(worker){
   let image,
       canvasData,
       ctx;
-  let imageURL = './images/cam3.png';
+  let imageURL = './images/cam1.png';
   let canvas = document.getElementById('canvas');
 
   // checking if canvas is supported
@@ -62,13 +62,14 @@ function analysePNG(worker){
     ctx = canvas.getContext('2d');
     image = new Image();
     image.src = imageURL;
-
     image.onload = function(){
+     
       var coordinateX = 0;
       var coordinateY = 0;
-      var tileY = image.height / 10;
-      var tileX = image.width / 10;
-
+      // image.height and image.widht - 10, because 10 separation lines by 1px in sum takes space of + 10px
+      var tileY = (image.height - 10) / 10;
+      var tileX = (image.width - 10) / 10;
+      
       canvas.width = image.width;
       canvas.height = image.height;
       var x,y;
@@ -81,24 +82,27 @@ function analysePNG(worker){
           ctx.drawImage(image, x, y, tileX, tileY, x+i*1, y+j*1,tileX, tileY);
         }
       }
-
-      //ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+      image.src = imageURL;
       
-      var tileData = ctx.getImageData(0, 0, canvas.width , canvas.height);
-      //Getting the picture
-      canvasData = ctx.getImageData(0, 0, canvas.width , canvas.height);
-      // Sending Image data to worker
-      worker.postMessage(tileData);
-      // Returning manipulated image data from worker
-      worker.onmessage = function(e) {
-        var imageData = e.data; 
-        // putting manipulated image data to canvas context
+      
+      // ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+      
+      // var tileData = ctx.getImageData(0, 0, 50, 50);
+      // //Getting the picture
+      // canvasData = ctx.getImageData(0, 0, canvas.width , canvas.height);
+      // //console.log(canvasData)
+      // // Sending Image data to worker
+      // worker.postMessage(tileData);
+      // // Returning manipulated image data from worker
+      // worker.onmessage = function(e) {
+      //   var imageData = e.data; 
+      //   // putting manipulated image data to canvas context
         
-        ctx.putImageData(imageData, 0, 0);
+      //   ctx.putImageData(imageData, 0, 0);
 
-      }
+      // }
     }
-    
+
   } else {
     // canvas-unsupported code here
     console.log('canvas not supported');
