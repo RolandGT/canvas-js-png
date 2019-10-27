@@ -1,0 +1,15 @@
+{
+  "name": "canvas-worker",
+  "version": "1.0.0",
+  "description": "PNG analyzer using canvas web worker",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rolandas Gedgaudas - T",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^0.11.1",
+    "mocha": "^6.2.2"
+  }
+}
