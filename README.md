@@ -83,7 +83,7 @@ function init(){
 }
 ```
 
-It is checked if Web Worer is supported is initiaized with provied file name as  argument.
+It is checked if Web Worer is supported is initiaized with provided file name as argument.
 
 ```javascript
 /**
@@ -123,7 +123,7 @@ function initWorker(workerFileName){
 ```
 
 PNG file is devided in tiles and sent to worker,
-after returned tiles are combined and put canvas
+after returned tiles are combined and put to canvas
 
 ```javascript
 /**
@@ -201,7 +201,7 @@ function analysePNG(worker, pImageURL){
 };
 ```
 
-### worer.js file
+### worker.js file
 tiles are manipulated
 
 ```javascript
